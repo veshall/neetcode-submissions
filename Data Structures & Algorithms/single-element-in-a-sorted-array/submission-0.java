@@ -1,0 +1,27 @@
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int s = 0;
+        int e = nums.length - 1;
+
+        while(s < e){
+            int m = s + (e - s) / 2;
+            boolean isEven = (m & 1) == 0;  
+
+            if(isEven){
+                if(nums[m] == nums[m + 1]){
+                    s = m + 1;
+                } else {
+                    e = m;
+                }
+            } else {
+                if(nums[m] == nums[m - 1]){
+                    s = m + 1;
+                } else {
+                    e = m;
+                }
+            }        
+        }
+
+        return nums[s];
+    }
+}
